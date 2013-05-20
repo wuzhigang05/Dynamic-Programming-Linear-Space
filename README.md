@@ -11,3 +11,16 @@ divide and conque technique in the dynamic Programming process. Below is an
 implementation of Hirschberg's algorithm. 
 http://en.wikipedia.org/wiki/Hirschberg's_algorithm
 
+
+Author
+=========
+Zhigang Wu
+Deparment of Botany and Plant Sciences
+University of California Riverside
+
+
+LICENSE
+=========
+BSD LICENSE
+
+
