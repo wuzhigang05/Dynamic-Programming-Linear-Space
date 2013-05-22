@@ -14,10 +14,7 @@ http://en.wikipedia.org/wiki/Hirschberg's_algorithm
 
 Author
 =========
-* Zhigang Wu
-* zhigang.wu@email.ucr.edu
-* Deparment of Botany and Plant Sciences
-* University of California Riverside
+Zhigang Wu (zhigang.wu@email.ucr.edu)
 
 LICENSE
 =========
