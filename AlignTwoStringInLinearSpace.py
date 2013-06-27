@@ -19,10 +19,6 @@ insertion    = -2
 deletion     = -2
 substitution = -1
 match        =  2
-#insertion    = 0
-#deletion     = 0
-#substitution = 0
-#match        = 1
 
 def lastLineAlign(x, y):
   """
@@ -113,8 +109,6 @@ def dynamicProgramming(x, y):
   middle = []
   i = len(x)
   j = len(y)
-#  print M
-#  print Path
   while Path[i][j]:
     if Path[i][j] == "d":
       row.insert(0, y[j-1])
@@ -170,7 +164,6 @@ def Hirschberge(x, y):
     scoreL = lastLineAlign(x[:xmid], y)
     scoreR = lastLineAlign(x[xmid:][::-1], y[::-1])
     ymid = partitionY(scoreL, scoreR)
-#    pdb.set_trace()
     row_l, column_u, middle_l = Hirschberge(x[:xmid], y[:ymid])
     row_r, column_d, middle_r = Hirschberge(x[xmid:], y[ymid:])
     row = row_l + row_r
@@ -180,13 +173,48 @@ def Hirschberge(x, y):
   return row, column, middle
         
 
-  
-if __name__ == '__main__':
-  o = sys.stdout
-  e = sys.stderr
-  parser= argparse.ArgumentParser(description="")
-  parser.add_argument("--file", help="")
-  args = parser.parse_args() 
+#gitted from heng li's repository https://github.com/lh3/readfq/blob/master/readfq.py
+
+def readfq(fp): # this is a generator function
+    last = None # this is a buffer keeping the last unprocessed line
+    while True: # mimic closure; is it a bad idea?
+        if not last: # the first record or a record following a fastq
+            for l in fp: # search for the start of the next record
+                if l[0] in '>@': # fasta/q header line
+                    last = l[:-1] # save this line
+                    break
+        if not last: break
+        name, seqs, last = last[1:].partition(" ")[0], [], None
+        for l in fp: # read the sequence
+            if l[0] in '@+>':
+                last = l[:-1]
+                break
+            seqs.append(l[:-1])
+        if not last or last[0] != '+': # this is a fasta record
+            yield name, ''.join(seqs), None # yield a fasta record
+            if not last: break
+        else: # this is a fastq record
+            seq, leng, seqs = ''.join(seqs), 0, []
+            for l in fp: # read the quality
+                seqs.append(l[:-1])
+                leng += len(l) - 1
+                if leng >= len(seq): # have read enough quality
+                    last = None
+                    yield name, seq, ''.join(seqs); # yield a fastq record
+                    break
+            if last: # reach EOF before reading enough quality
+                yield name, seq, None # yield a fasta record instead
+                break
+
+def getHandle(file):
+  """return the filehandle for the specified filename
+  """
+  if hasattr(file, "read"):
+    return file
+  else:
+    return open(file)
+
+def test():
   Xs = ["AGTACGCA", "hello", "T", "T", "T"]
   Ys = ["TATGC", "hllo", "C", "T", ""]
   for i, (x, y) in enumerate(zip(Xs, Ys)):
@@ -196,3 +224,24 @@ if __name__ == '__main__':
     print middle
     print column
     print 
+
+if __name__ == '__main__':
+  o = sys.stdout
+  e = sys.stderr
+  parser= argparse.ArgumentParser(
+      description="This program can return the alignment for two sequences in by only using linear space. " +
+      "The sequence files can be either in FASTA or FASTQ format")
+  parser.add_argument("file1", help="reference sequence file <Must be in FASTA/Q> format")
+  parser.add_argument("file2", help="query sequence file <Must be in FASTA/Q> format")
+  args = parser.parse_args() 
+  test()
+  seqstr1 = list(readfq(getHandle(args.file1)))[0][1]
+  seqstr2 = list(readfq(getHandle(args.file2)))[0][1]
+  for i, (x, y) in enumerate(zip([seqstr1], [seqstr2])):
+    row, column, middle = Hirschberge(x, y)
+    print '#' * 8, "Alignment %r" % i, '#' * 8
+    print row
+    print middle
+    print column
+    print 
+
