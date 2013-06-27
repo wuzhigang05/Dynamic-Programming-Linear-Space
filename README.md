@@ -8,14 +8,13 @@ The factor limits dynamic programing's application often is not running time (O(
 but the quardratic space requirement, where n and m are the length of two sequence.
 The Hirschberg algorithm reduces the space requirement from O(nm) to O(n) by involves 
 divide and conque technique in the dynamic Programming process. Below is an 
-implementation of Hirschberg's algorithm. 
-http://en.wikipedia.org/wiki/Hirschberg's_algorithm
+implementation of [Hirschberg's algorithm](http://en.wikipedia.org/wiki/Hirschberg's_algorithm).
 
 Requirements
 =============
   1. Python version >2.7
   
-  2. numpy
+  2. package: [numpy] (http://www.numpy.org/)
 
 Example Usage
 =============
