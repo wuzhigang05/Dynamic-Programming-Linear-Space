@@ -11,6 +11,11 @@ divide and conque technique in the dynamic Programming process. Below is an
 implementation of Hirschberg's algorithm. 
 http://en.wikipedia.org/wiki/Hirschberg's_algorithm
 
+Requirements
+=============
+  1. Python version >2.7
+  
+  2. numpy
 
 Example Usage
 =============
@@ -21,21 +26,11 @@ To display help
 
     python AlignTwoStringInLinearSpace.py -h
 
-Requirements
-=============
-  1. Python version >2.7
-  
-  2. numpy
 
-Author
-=========
+Send Bugs/Commnents to
+======================
 Zhigang Wu (zhigang.wu@email.ucr.edu)
 
-Department of Botany and Plant Sciences
-
-Deparment of Computer Science and Engineering
-
-University of California Riverside
 
 
 LICENSE
