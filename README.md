@@ -14,11 +14,12 @@ http://en.wikipedia.org/wiki/Hirschberg's_algorithm
 
 Example Usage
 =============
-  python AlignTwoStringInLinearSpace.py file1 file2
+
+    python AlignTwoStringInLinearSpace.py file1 file2
 
 To display help
 
-  python AlignTwoStringInLinearSpace.py -h
+    python AlignTwoStringInLinearSpace.py -h
 
 Author
 =========
