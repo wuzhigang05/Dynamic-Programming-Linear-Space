@@ -19,13 +19,13 @@ Requirements
 
 Example Usage
 =============
-
-    python AlignTwoStringInLinearSpace.py file1 file2
-
-To display help
+1. To display help
 
     python AlignTwoStringInLinearSpace.py -h
 
+2. Below command will write the alignment of two sequences to the STDOUT 
+
+    python AlignTwoStringInLinearSpace.py file1 file2
 
 Send Bugs/Commnents to
 ======================
