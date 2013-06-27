@@ -21,6 +21,12 @@ To display help
 
     python AlignTwoStringInLinearSpace.py -h
 
+Requirements
+=============
+  1. Python version >2.7
+  
+  2. numpy
+
 Author
 =========
 Zhigang Wu (zhigang.wu@email.ucr.edu)
