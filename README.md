@@ -26,6 +26,13 @@ To display help
 
     python AlignTwoStringInLinearSpace.py file1 file2
 
+ Example Output:
+
+ ######## Alignment 0 ########
+ ATGG
+ ||:|
+ ATCG
+
 Send Bugs/Commnents to
 ======================
 Zhigang Wu (zhigang.wu@email.ucr.edu)
