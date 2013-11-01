@@ -5,6 +5,7 @@ import argparse
 import numpy as np
 import copy
 import re
+import unittest
 """
 
 The factor limits dynamic programing's application often is not running time (O(nm)) 
@@ -214,16 +215,17 @@ def getHandle(file):
   else:
     return open(file)
 
-def test():
-  Xs = ["AGTACGCA", "hello", "T", "T", "T"]
-  Ys = ["TATGC", "hllo", "C", "T", ""]
-  for i, (x, y) in enumerate(zip(Xs, Ys)):
-    row, column, middle = Hirschberge(x, y)
-    print '#' * 8, "Alignment %r" % i, '#' * 8
-    print row
-    print middle
-    print column
-    print 
+class MyTest(unittest.TestCase):
+  def test():
+    Xs = ["AGTACGCA", "hello", "T", "T", "T"]
+    Ys = ["TATGC", "hllo", "C", "T", ""]
+    for i, (x, y) in enumerate(zip(Xs, Ys)):
+      row, column, middle = Hirschberge(x, y)
+      print '#' * 8, "Alignment %r" % i, '#' * 8
+      print row
+      print middle
+      print column
+      print 
 
 if __name__ == '__main__':
   o = sys.stdout
@@ -234,7 +236,6 @@ if __name__ == '__main__':
   parser.add_argument("file1", help="reference sequence file <Must be in FASTA/Q> format")
   parser.add_argument("file2", help="query sequence file <Must be in FASTA/Q> format")
   args = parser.parse_args() 
-#  test()
   seqstr1 = list(readfq(getHandle(args.file1)))[0][1]
   seqstr2 = list(readfq(getHandle(args.file2)))[0][1]
   for i, (x, y) in enumerate(zip([seqstr1], [seqstr2])):
