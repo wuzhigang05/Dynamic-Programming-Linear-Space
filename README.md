@@ -29,6 +29,7 @@ To display help
  Example Output:
 
  ######## Alignment 0 ########
+
  ATGG
  ||:|
  ATCG
