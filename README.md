@@ -24,15 +24,13 @@ To display help
 
  Below command will write the alignment of two sequences to the STDOUT 
 
-    python AlignTwoStringInLinearSpace.py file1 file2
-
- Example Output:
-
+```bash
+user> python AlignTwoStringInLinearSpace.py file1 file2
  ######## Alignment 0 ########
-
  ATGG
  ||:|
  ATCG
+```
 
 Send Bugs/Commnents to
 ======================
